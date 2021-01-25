@@ -48,7 +48,7 @@ while(1):
             pass
 
     cv2.imshow('Frame',img)
-    #cv2.imshow("",red_mask)
+    cv2.imshow("",red_mask)
     k = cv2.waitKey(30) & 0xff; 
     if k == 27: 
         break; 
