@@ -30,7 +30,7 @@ def record(name):
                 try:
                     (x,y,w,h) = cv2.boundingRect(cnt)
                     if (40<= w <= 100 and h<=40):
-                        cv2.rectangle(img,(x,y),(x+w,y+h),(0,255,0),2)
+                        cv2.rectangle(img,(x,y),(x+w,y+h),(255,0,0),2)
                     elif (40<= w <= 100 and 40<h<=50):
                         cv2.rectangle(img,(x,y),(x+w,y+h),(0,0,255),2)
                     
