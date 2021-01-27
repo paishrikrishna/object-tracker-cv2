@@ -29,11 +29,17 @@ def record(name):
             for cnt in contours:
                 try:
                     (x,y,w,h) = cv2.boundingRect(cnt)
-                    if (40<= w <= 100 and h<=40):
+                    if (40<= w <= 100 and 30<=h<=40):
                         cv2.rectangle(img,(x,y),(x+w,y+h),(255,0,0),2)
-                    elif (40<= w <= 100 and 40<h<=50):
+                        cv2.circle(img,(int((x+x+w)/2),int((y+y+h)/2)),4,(0,0,0),4)
+                        cv2.line(img,(int((x+x+w)/2),int((y+y+h)/2)),(int((x+x+w)/2),bird_y_mid),(0,255,0),2)
+                    elif ((40<= w <= 80 and 40<h<=50) or (40<= h <= 100 and 40<w<=50) ):
                         cv2.rectangle(img,(x,y),(x+w,y+h),(0,0,255),2)
-                    
+                        bird_x_mid = int((x+x+w)/2)
+                        bird_y_mid = int((y+y+h)/2)
+                        cv2.circle(img,(bird_x_mid,bird_y_mid),4,(0,0,0),4)
+                        cv2.line(img,(0,bird_y_mid),(4000,bird_y_mid),(0,255,0),3)
+
                     #x_medium = int((x+x+w)/2)
                     #y_medium = int((y+y+h)/2)
                     #cv2.line(img,(x_medium,0),(x_medium,4080),(0,255,0),2)
@@ -61,6 +67,7 @@ def record(name):
                     #break
                 except:
                     pass
+            
             if time.time() - last_time > 1./desired_fps:
                 last_time = time.time()
                 destRGB = cv2.cvtColor(img, cv2.COLOR_BGRA2BGR)
